@@ -66,7 +66,6 @@ class MySolver(Solver):
         # await self.add_item_to_cart()
 
         # await self.page.screenshot({"path": f"./images/on_start_ss-{timestamp}.png"})
-        # await self.page.type('input[name="input1"]', 'value')
     
     async def on_finish(self):
         print("finshing inside solver")
