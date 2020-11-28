@@ -1,81 +1,143 @@
 import requests
 import time
 import asyncio
+import threading
+import fuckcaptcha
 from pyppeteer import launch
+from colorama import init
+from termcolor import colored
 
 from custom_solver import MySolver
+from utils.alerts import play_quiet_alert, execute_alert
+from utils.scrape import PageContext
+from utils.random import random_int
+from settings import (
+    options,
+    email_options,
+    paypal_options,
+    agent,
+    item_data,
+    alert_type,
+)
+
+init() # inits terminal color text
+
+
+async def scrape_url(item):
+    main_url = item["url"]
+    item_url = item["item_url"]
+    cart_url = item["cart_url"]
+    item_btn_title = item["item_title"]
+    item_name = item["name"]
+    max_retry = 3
+
+    browser = await launch(headless=False, args=options["args"])
+
+    # Set user-agent to all pages
+    pages = await browser.pages()
+    for page in pages:
+        await page.setUserAgent(agent)
+    page = pages[0]  # Set first page
+    
+    page_context = PageContext(page=page, item=item)
+
+    await page_context.goto(main_url)
+    await asyncio.sleep(1) # add delay variation
+    await page_context.goto(item_url)
+
+    while not page_context.item_added and max_retry >= 0:
+        add_results = False
+
+        try:
+            add_results = await page_context.add_item_to_cart()
+        except Exception as e:
+            print(e)
+            await play_quiet_alert()
+        
+        if add_results:
+            # go to cart for last verification
+            await page.goto(url=cart_url)
+            results = await page_context.check_added_item_to_cart(
+                added_text=item_btn_title
+            )
+            
+            if results:
+                print(colored(f"{item_name}: ADDED TO CART", 'green'))
+                page_context.item_added = True
+                if alert_type == "email":
+                    await page_context.login()
+                await execute_alert()
+                await browser.close()
+                return True
+            else:
+                max_retry -= 1
+                print(colored(f"ERROR: {item_name} has been added but cannot be found in cart!", 'red'))
+        else:
+            print(colored(f"{item_name}: OUT OF STOCK", 'red'))
+            await page_context.refresh_page()
+            print("Sleeping for 5 seconds...")
+            await asyncio.sleep(5)
+    
+    await browser.close()
+    return False
+
+async def run():
+    # while len(item_data) > 0:
+    #     tasks = []
+    #     for item in item_data:
+    #         task = asyncio.create_task(scrape_url(item))
+    #         tasks.append(task)
+        
+    #     response = await asyncio.gather(*tasks)
+    #     while True in response: # remove completed task(s)
+    #         idx = response.index(True)
+    #         response.pop(idx)
+    #         item_data.pop(idx)
+    
+    tasks = []
+    for item in item_data:
+        task = asyncio.create_task(scrape_url(item))
+        tasks.append(task)
+    
+    response = await asyncio.gather(*tasks)
+    print(response)
 
 
 def recaptcha_solver(
     alert_type,
-    item_id,
-    item_qty,
+    item_data,
     email_options=None,
     paypal_options=None,
     test=False
     ):
-    keep_looping = True
-    newegg_item_url = f"https://secure.newegg.com/Shopping/AddToCart.aspx?Submit=ADD&ItemList={item_id}|{item_qty}"
-    newegg_url = f"https://secure.newegg.com/Shopping/AddToCart.aspx?Submit=ADD&ItemList={item_id}|{item_qty}"
-    # newegg_item_url = f"https://www.newegg.com/v-color-16gb-288-pin-ddr4-sdram/p/0RN-00MB-00061?Item=9SIAMCMCHG2313&nspcid=345295&nspgid=345296"
-    # newegg_url = "https://www.newegg.com/"
-
-    # if alert_type == "sound":
-    #     newegg_url = f"https://secure.newegg.com/Shopping/AddToCart.aspx?Submit=ADD&ItemList={item_id_test}|{qty}"
-    # elif alert_type == "email":
-    #     newegg_url = newegg_url = "https://www.newegg.com/"
-    # elif alert_type == "paypal":
-    #     newegg_url = newegg_url = "https://www.newegg.com/"
-    
-    # newegg_url_test = "https://www.newegg.com/evga-geforce-rtx-2080-ti-11g-p4-2487-rx/p/N82E16814487515?Description=rtx%202080&cm_re=rtx_2080-_-14-487-515-_-Product&quicklink=true"
-
-    args = ["--timeout 5"]
-    options = {
-        "ignoreHTTPSErrors": True,
-        "args": args,
-        "target_url": newegg_url,
-    }
     client = MySolver(
-        pageurl=newegg_url,
-        item_url=newegg_item_url,
+        pageurl="https://www.newegg.com/",
         lang="en-US",
         options=options,
         alert_type=alert_type,
+        item_data=item_data,
         email_options=email_options,
-        paypal_options=paypal_options
+        paypal_options=paypal_options,
     )
 
-    while keep_looping:
-        solution, cart_results = client.loop.run_until_complete(client.start())
-
-        if solution and solution.get("status") == "detected":
-            print("Recaptcha solved!")
-            print(solution)
-
-            if cart_results:
-                keep_looping = False
-
-        else:
-            print("No solving required!")
-            print(solution)
-
-            if cart_results:
-                keep_looping = False
+    solution = client.loop.run_until_complete(client.start())
         
-        print("Attempting to add to cart again in 10 seconds...")
-        time.sleep(10)
+    print(solution)
+    if solution:
+        print("Recaptcha solved! Executed alerts.")
+    print("Exiting script...")
 
 if __name__ == "__main__":
-    email_options = {
-        "email": "m0usiexdavid@hotmail.com",
-        "password": "miceyman31@"
-    }
-    item_id = "N82E16814126457"
-    item_id_test = "9SIAMCMCHG2313"
-    qty = 1
-    recaptcha_solver(
-        alert_type="email",
-        item_id=item_id_test,
-        item_qty=qty,
-        email_options=email_options,
-    )
+    # recaptcha_solver(
+    #     alert_type="sound",
+    #     item_data=item_data,
+    #     email_options=email_options,
+    # )
+
+    loop = asyncio.get_event_loop()
+    future = asyncio.ensure_future(run())
+
+    loop.run_until_complete(future)
+
+    # pending = asyncio.all_tasks()
+    # loop.run_until_complete(asyncio.gather(*pending))

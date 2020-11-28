@@ -7,7 +7,6 @@ authors = ["Daviee"]
 [tool.poetry.dependencies]
 python = "^3.8"
 goodbyecaptcha = "^2.4.2"
-emails = "^0.6"
 
 [tool.poetry.dev-dependencies]
 
