@@ -7,7 +7,6 @@ from datetime import datetime
 from pyppeteer.errors import PyppeteerError, PageError
 
 from settings import email_options
-from utils.asyncio import get_event_loop
 
 
 class PageContext():
@@ -16,7 +15,6 @@ class PageContext():
         self.item = item
         self.item_btn_title = item["item_title"]
         self.language = "en-US"
-        # self.loop = get_event_loop()
         self.page_load_timeout = 30 # in seconds
         self.item_added = False
 

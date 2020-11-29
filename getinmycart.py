@@ -77,6 +77,7 @@ async def scrape_url(item):
                 page_context.item_added = True
                 if alert_type == "email":
                     await page_context.login()
+                    await play_quiet_alert()
                 email(item_name=item_name, item_url=item_url)
                 await browser.close()
                 return True
