@@ -1,7 +1,11 @@
 from fake_useragent import UserAgent
+from environs import Env
+
+env = Env()
+env.read_env() # read .env file, if it exists
 
 
-alert_type = "email"
+alert_type = env.str("NOTIFICATION_MODE", default="sound")
 item_data = [
     {
         "name": "ASUS TUF GeForce RTX 3080",
@@ -120,12 +124,12 @@ options = {
     "args": args,
 }
 email_options = {
-    "email": "m0usiexdavid@hotmail.com",
-    "password": "miceyman31@",
+    "email": env.str("USER_EMAIL", default=""),
+    "password": env.str("USER_EMAIL_PASSWORD", default=""),
 }
 paypal_options = None
 
 # For email notifications
-email_sender = "getinmycart1@gmail.com"
-email_password = "Mouse31@"
-email_recipients = ["investmentracker1@gmail.com"]
+email_sender = env.str("HOST_EMAIL", default="")
+email_password = env.str("HOST_EMAIL_PASSWORD", default="")
+email_recipients = env.list("HOST_EMAIL_RECIPIENTS", default=[])

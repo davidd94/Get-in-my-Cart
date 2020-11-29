@@ -7,4 +7,6 @@ py -m pip install --user virtualenv
 
 py -m venv env
 
+copy /y %CD%\.env.sample %CD%\.env
+
 cmd /c "cd /d %CD%\env\Scripts & activate & cd /d    %CD% & pip install -r requirements.txt & pip install downloads\PyAudio-0.2.11-cp38-cp38-win_amd64.whl"
