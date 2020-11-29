@@ -11,14 +11,14 @@ item_data = [
         "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
         "item_title": "ASUS TUF Gaming GeForce RTX 3080 TUF-RTX3080-O10G-GAMING Video Card"
     },
-    # {
-    #     "name": "MSI GeForce RTX 3080 X TRIO",
-    #     "url": "https://www.newegg.com/",
-    #     "item_url": "https://www.newegg.com/msi-geforce-rtx-3080-rtx-3080-gaming-x-trio-10g/p/N82E16814137597",
-    #     "cart_url": "https://secure.newegg.com/shop/cart",
-    #     "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
-    #     "item_title": "MSI GeForce RTX 3080 DirectX 12 RTX 3080 GAMING X TRIO 10G 10GB 320-Bit GDDR6X PCI Express 4.0 HDCP Ready Video Card",
-    # },
+    {
+        "name": "MSI GeForce RTX 3080 X TRIO",
+        "url": "https://www.newegg.com/",
+        "item_url": "https://www.newegg.com/msi-geforce-rtx-3080-rtx-3080-gaming-x-trio-10g/p/N82E16814137597",
+        "cart_url": "https://secure.newegg.com/shop/cart",
+        "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
+        "item_title": "MSI GeForce RTX 3080 DirectX 12 RTX 3080 GAMING X TRIO 10G 10GB 320-Bit GDDR6X PCI Express 4.0 HDCP Ready Video Card",
+    },
     {
         "name": "WD Blue 3D NAND 500GB",
         "url": "https://www.newegg.com/",
@@ -27,56 +27,57 @@ item_data = [
         "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
         "item_title": "WD Blue 3D NAND 500GB Internal SSD - SATA III 6Gb/s 2.5\"/7mm Solid State Drive - WDS500G2B0A",
     },
-    # {
-    #     "name": "ASUS ROG Strix GeForce RTX 3080",
-    #     "url": "https://www.newegg.com/",
-    #     "item_url": "https://www.newegg.com/asus-geforce-rtx-3080-rog-strix-rtx3080-o10g-gaming/p/N82E16814126457",
-    #     "cart_url": "https://secure.newegg.com/shop/cart",
-    #     "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
-    #     "item_title": "ASUS ROG Strix GeForce RTX 3080 DirectX 12 ROG-STRIX-RTX3080-O10G-GAMING 10GB 320-Bit GDDR6X PCI Express 4.0 x16 HDCP Ready Video Card",
-    # },
-    # {
-    #     "name": "MSI GeForce RTX 3080 VENTUS 3X",
-    #     "url": "https://www.newegg.com/",
-    #     "item_url": "https://www.newegg.com/msi-geforce-rtx-3080-rtx-3080-ventus-3x-10g/p/N82E16814137600",
-    #     "cart_url": "https://secure.newegg.com/shop/cart",
-    #     "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
-    #     "item_title": "MSI GeForce RTX 3080 DirectX 12 RTX 3080 VENTUS 3X 10G 10GB 320-Bit GDDR6X PCI Express 4.0 HDCP Ready Video Card",
-    # },
-    # {
-    #     "name": "EVGA GeForce RTX 3080",
-    #     "url": "https://www.newegg.com/",
-    #     "item_url": "https://www.newegg.com/evga-geforce-rtx-3080-10g-p5-3897-kr/p/N82E16814487518",
-    #     "cart_url": "https://secure.newegg.com/shop/cart",
-    #     "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
-    #     "item_title": "EVGA GeForce RTX 3080 FTW3 ULTRA GAMING Video Card, 10G-P5-3897-KR, 10GB GDDR6X, iCX3 Technology, ARGB LED, Metal Backplate",
-    # },
-    # {
-    #     "name": "ASUS Radeon RX 6800 XT",
-    #     "url": "https://www.newegg.com/",
-    #     "item_url": "https://www.newegg.com/asus-radeon-rx-6800-xt-rx6800xt-16g/p/N82E16814126472",
-    #     "cart_url": "https://secure.newegg.com/shop/cart",
-    #     "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
-    #     "item_title": "ASUS Radeon RX 6800 XT RX6800XT-16G 16GB 256-Bit GDDR6 PCI Express 4.0 Video Card",
-    # },
-    # {
-    #     "name": "GIGABYTE Radeon RX 6800 XT",
-    #     "url": "https://www.newegg.com/",
-    #     "item_url": "https://www.newegg.com/gigabyte-radeon-rx-6800-xt-gv-r68xt-16gc-b/p/N82E16814932373",
-    #     "cart_url": "https://secure.newegg.com/shop/cart",
-    #     "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
-    #     "item_title": "GIGABYTE Radeon RX 6800 XT DirectX 12 GV-R68XT-16GC-B 16GB 256-Bit GDDR6 PCI Express 4.0 x16 ATX Video Card",
-    # },
-    # {
-    #     "name": "ASUS TUF Gaming Radeon RX 6800",
-    #     "url": "https://www.newegg.com/",
-    #     "item_url": "https://www.newegg.com/asus-radeon-rx-6800-tuf-rx6800-o16g-gaming/p/N82E16814126478",
-    #     "cart_url": "https://secure.newegg.com/shop/cart",
-    #     "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
-    #     "item_title": "ASUS TUF Gaming Radeon RX 6800 TUF-RX6800-O16G-GAMING 16GB 256-Bit GDDR6 PCI Express 4.0 HDCP Ready Video Card",
-    # },
+    {
+        "name": "ASUS ROG Strix GeForce RTX 3080",
+        "url": "https://www.newegg.com/",
+        "item_url": "https://www.newegg.com/asus-geforce-rtx-3080-rog-strix-rtx3080-o10g-gaming/p/N82E16814126457",
+        "cart_url": "https://secure.newegg.com/shop/cart",
+        "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
+        "item_title": "ASUS ROG Strix GeForce RTX 3080 DirectX 12 ROG-STRIX-RTX3080-O10G-GAMING 10GB 320-Bit GDDR6X PCI Express 4.0 x16 HDCP Ready Video Card",
+    },
+    {
+        "name": "MSI GeForce RTX 3080 VENTUS 3X",
+        "url": "https://www.newegg.com/",
+        "item_url": "https://www.newegg.com/msi-geforce-rtx-3080-rtx-3080-ventus-3x-10g/p/N82E16814137600",
+        "cart_url": "https://secure.newegg.com/shop/cart",
+        "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
+        "item_title": "MSI GeForce RTX 3080 DirectX 12 RTX 3080 VENTUS 3X 10G 10GB 320-Bit GDDR6X PCI Express 4.0 HDCP Ready Video Card",
+    },
+    {
+        "name": "EVGA GeForce RTX 3080",
+        "url": "https://www.newegg.com/",
+        "item_url": "https://www.newegg.com/evga-geforce-rtx-3080-10g-p5-3897-kr/p/N82E16814487518",
+        "cart_url": "https://secure.newegg.com/shop/cart",
+        "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
+        "item_title": "EVGA GeForce RTX 3080 FTW3 ULTRA GAMING Video Card, 10G-P5-3897-KR, 10GB GDDR6X, iCX3 Technology, ARGB LED, Metal Backplate",
+    },
+    {
+        "name": "ASUS Radeon RX 6800 XT",
+        "url": "https://www.newegg.com/",
+        "item_url": "https://www.newegg.com/asus-radeon-rx-6800-xt-rx6800xt-16g/p/N82E16814126472",
+        "cart_url": "https://secure.newegg.com/shop/cart",
+        "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
+        "item_title": "ASUS Radeon RX 6800 XT RX6800XT-16G 16GB 256-Bit GDDR6 PCI Express 4.0 Video Card",
+    },
+    {
+        "name": "GIGABYTE Radeon RX 6800 XT",
+        "url": "https://www.newegg.com/",
+        "item_url": "https://www.newegg.com/gigabyte-radeon-rx-6800-xt-gv-r68xt-16gc-b/p/N82E16814932373",
+        "cart_url": "https://secure.newegg.com/shop/cart",
+        "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
+        "item_title": "GIGABYTE Radeon RX 6800 XT DirectX 12 GV-R68XT-16GC-B 16GB 256-Bit GDDR6 PCI Express 4.0 x16 ATX Video Card",
+    },
+    {
+        "name": "PS5 Bundle - Extra DualSense 5 Controller",
+        "url": "https://www.newegg.com/",
+        "item_url": "https://www.newegg.com/p/N82E16868110292",
+        "cart_url": "https://secure.newegg.com/shop/cart",
+        "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
+        "item_title": "PS5 Bundle - Includes PS5 Console and One Extra DualSense 5 Controller",
+    },
 ]
 
+headless=True
 agent = UserAgent(verify_ssl=False).random
 args = [
     '--cryptauth-http-host ""',
@@ -103,7 +104,8 @@ args = [
     '--no-first-run',
     '--safebrowsing-disable-auto-update',
     '--no-sandbox',
-    '--timeout 5',
+    # '--timeout 5',
+    # '--start-maximized',
     # Automation arguments
     '--enable-automation',
     '--password-store=basic',
@@ -114,13 +116,16 @@ args = [
 options = {
     "ignoreHTTPSErrors": True,
     "defaultViewport": None,
+    "dumpio": True,
     "args": args,
 }
 email_options = {
-    "email": "getinmycart1@gmail.com",
-    "password": "Mouse31@",
-    "recipients": ["investmentracker1@gmail.com"],
+    "email": "m0usiexdavid@hotmail.com",
+    "password": "miceyman31@",
 }
-email_subject = "*** ITEM ADDED TO YOUR CART ***"
-email_body = "Item has been added to your cart. Hurry and buy it now: https://newegg.com"
 paypal_options = None
+
+# For email notifications
+email_sender = "getinmycart1@gmail.com"
+email_password = "Mouse31@"
+email_recipients = ["investmentracker1@gmail.com"]

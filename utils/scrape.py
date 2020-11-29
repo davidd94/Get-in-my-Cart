@@ -20,6 +20,9 @@ class PageContext():
         self.page_load_timeout = 30 # in seconds
         self.item_added = False
 
+    async def init_settings(self):
+        self.page.setDefaultNavigationTimeout(0)
+
     async def goto(self, url):
         # jquery_js = await load_file(self.jquery_data)
         # await self.page.evaluateOnNewDocument("() => {\n%s}" % jquery_js)  # Inject JQuery
@@ -28,44 +31,12 @@ class PageContext():
 
         await self.page.goto(
             url,
-            timeout=0,
-            waitUntil=['load'],
+            waitUntil=[
+                "load",
+                # "networkidle0",
+                # "networkidle2",
+            ],
         )
-
-        await self.close_popup()
-
-        # await self.page.waitForNavigation({'waitUntil': 'load'})
-
-        # retry = 3  # Go to Page and Retry 3 times
-        # while True:
-        #     try:
-        #         await self.page.goto(
-        #             url, timeout=self.page_load_timeout * 1000,
-        #             waitUntil=["networkidle0", "domcontentloaded"]
-        #         )
-        #         break
-        #     except asyncio.TimeoutError as ex:
-        #         traceback.print_exc(file=sys.stdout)
-        #         print('Error timeout: ' + str(ex) + ' retry ' + str(retry))
-        #         if retry > 0:
-        #             retry -= 1
-        #         else:
-        #             raise TimeoutError("Page loading timed-out")
-        #     except PyppeteerError as ex:
-        #         traceback.print_exc(file=sys.stdout)
-        #         print(f"Pyppeteer error: {ex}")
-        #         if retry > 0:
-        #             retry -= 1
-        #         else:
-        #             raise ex
-        #     except Exception as ex:
-        #         traceback.print_exc(file=sys.stdout)
-        #         print('Error unexpected: ' + str(ex) + ' retry ' + str(retry))
-        #         if retry > 0:
-        #             retry -= 1
-        #         else:
-        #             raise PageError(f"Page raised an error: `{ex}`")
-
 
     async def add_item_to_cart(self):
         existing_btn_elem = await self.existing_element(
@@ -76,28 +47,22 @@ class PageContext():
 
         text_content = await self.get_element_text_content("h1", "textContent", "product-title")
         if text_content != self.item_btn_title:
-            raise RuntimeError("Item titles aren't matching!")
+            raise RuntimeError(f"Item set title ({self.item['name']}) aren't matching with website title ({text_content})!")
 
         if existing_btn_elem:
             elem_title = f"Add {self.item_btn_title} to cart"
             elem_title = json.dumps(elem_title) # escapes quotes in item titles
             element = await self.page.querySelector(f'button[title={elem_title}]')
-            
-            await self.page.evaluate(f"(element) => element.click()", element)
 
-            # await self.page.querySelector(f'button[title="{elem_title}"]').click()
-
-            await asyncio.sleep(1)
-
-            return True
+            if element:
+                await self.page.evaluate(f"(element) => element.click()", element)
+                await asyncio.sleep(1)
+                return True
         return False
 
     async def check_added_item_to_cart(self, added_text):
         js_func_added = f"window.find('{added_text}');"
-        
         found_added_cart_text = await self.page.evaluate(js_func_added)
-
-        # print(f"Added to Cart Text Found: {found_added_cart_text}")
         
         if found_added_cart_text:
             print(f"Successfully added to cart at: {datetime.now()}")
@@ -134,10 +99,9 @@ class PageContext():
 
         print("Entering login email...")
         await self.page.type('input[name="signEmail"]', login_email)
-        await self.page.waitForNavigation({'waitUntil': 'load'})
-        await asyncio.sleep(1)
+        await asyncio.sleep(2)
         await self.page.click('button[id="signInSubmit"]')
-        await asyncio.sleep(1)
+        await asyncio.sleep(2)
         
         # email_code_elem = await self.existing_element(
         #     elem_tag="div",
@@ -160,23 +124,18 @@ class PageContext():
         #     print("Solving recaptcha for login...")
         #     await self.solve()
 
-        password_input = await self.existing_element(
+        await self.existing_element(
             elem_tag="input",
             elem_attr="id",
             elem_attr_values=["labeled-input-password"],
         )
-        print("checking password input element...")
-        await asyncio.sleep(10)
-        print(password_input)
         print("Entering login pass...")
-        await asyncio.sleep(5)
         await self.page.type('input[name="password"]', login_pass)
-        await self.page.waitForNavigation({'waitUntil': 'load'})
-        await asyncio.sleep(1)
+        await asyncio.sleep(2)
         await self.page.click('button[id="signInSubmit"]')
-
         print("Logging in...")
         await self.page.waitForNavigation()
+        print("Logged in!")
 
     async def close_popup(self):
         popup = await self.existing_element("div", "id", ["popup"])
@@ -186,8 +145,27 @@ class PageContext():
             await self.page.click('a[id="popup-close"]')
 
     async def refresh_page(self):
-        await self.page.reload({
-            "waitUntil": [
-                "domcontentloaded",
+        # await self.page.goto(self.item["item_url"], {
+        #     "waitUntil": [
+        #         # "domcontentloaded",
+        #         # "networkidle0",
+        #         # "networkidle2",
+        #         "load",
+        #     ]
+        # })
+
+        # await self.page.waitForNavigation({
+        #     "waitUntil": [
+        #         # "domcontentloaded",
+        #         # "networkidle0",
+        #         # "networkidle2",
+        #         "load",
+        #     ]
+        # })
+
+        await asyncio.wait(
+            [
+                self.page.waitForNavigation(waitUntil=["load"]),
+                self.page.reload(waitUtil=["load"]),
             ]
-        })
+        )

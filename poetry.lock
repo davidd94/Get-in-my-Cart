@@ -1,10 +1,10 @@
 [[package]]
-category = "main"
-description = "Async client for aws services using botocore and aiohttp"
 name = "aiobotocore"
+version = "0.9.3"
+description = "Async client for aws services using botocore and aiohttp"
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.9.3"
 
 [package.dependencies]
 aiohttp = ">=3.3.1"
@@ -12,24 +12,24 @@ botocore = ">=1.10.58,<1.10.59"
 wrapt = ">=1.10.10"
 
 [package.extras]
-awscli = ["awscli (1.15.59)"]
-boto3 = ["boto3 (1.7.58)"]
+awscli = ["awscli (==1.15.59)"]
+boto3 = ["boto3 (==1.7.58)"]
 
 [[package]]
-category = "main"
-description = "File support for asyncio."
 name = "aiofiles"
+version = "0.3.2"
+description = "File support for asyncio."
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.3.2"
 
 [[package]]
-category = "main"
-description = "Async http client/server framework (asyncio)"
 name = "aiohttp"
+version = "3.3.2"
+description = "Async http client/server framework (asyncio)"
+category = "main"
 optional = false
 python-versions = ">=3.5.3"
-version = "3.3.2"
 
 [package.dependencies]
 async-timeout = ">=3.0,<4.0"
@@ -40,36 +40,36 @@ multidict = ">=4.0,<5.0"
 yarl = ">=1.0,<2.0"
 
 [[package]]
-category = "main"
-description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 name = "appdirs"
+version = "1.4.3"
+description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+category = "main"
 optional = false
 python-versions = "*"
-version = "1.4.3"
 
 [[package]]
-category = "main"
-description = "Async generators and context managers for Python 3.5+"
 name = "async-generator"
+version = "1.10"
+description = "Async generators and context managers for Python 3.5+"
+category = "main"
 optional = false
 python-versions = ">=3.5"
-version = "1.10"
 
 [[package]]
-category = "main"
-description = "Timeout context manager for asyncio programs"
 name = "async-timeout"
+version = "3.0.0"
+description = "Timeout context manager for asyncio programs"
+category = "main"
 optional = false
 python-versions = ">=3.5.3"
-version = "3.0.0"
 
 [[package]]
-category = "main"
-description = "Classes Without Boilerplate"
 name = "attrs"
+version = "19.3.0"
+description = "Classes Without Boilerplate"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "19.3.0"
 
 [package.extras]
 azure-pipelines = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface", "pytest-azurepipelines"]
@@ -78,12 +78,12 @@ docs = ["sphinx", "zope.interface"]
 tests = ["coverage", "hypothesis", "pympler", "pytest (>=4.3.0)", "six", "zope.interface"]
 
 [[package]]
-category = "main"
-description = "Screen-scraping library"
 name = "beautifulsoup4"
+version = "4.8.1"
+description = "Screen-scraping library"
+category = "main"
 optional = false
 python-versions = "*"
-version = "4.8.1"
 
 [package.dependencies]
 soupsieve = ">=1.2"
@@ -93,68 +93,65 @@ html5lib = ["html5lib"]
 lxml = ["lxml"]
 
 [[package]]
-category = "main"
-description = "Low-level, data-driven core of boto 3."
 name = "botocore"
+version = "1.10.58"
+description = "Low-level, data-driven core of boto 3."
+category = "main"
 optional = false
 python-versions = "*"
-version = "1.10.58"
 
 [package.dependencies]
 docutils = ">=0.10"
 jmespath = ">=0.7.1,<1.0.0"
-
-[package.dependencies.python-dateutil]
-python = ">=2.7"
-version = ">=2.1,<3.0.0"
+python-dateutil = {version = ">=2.1,<3.0.0", markers = "python_version >= \"2.7\""}
 
 [[package]]
-category = "main"
-description = "Python package for providing Mozilla's CA Bundle."
 name = "certifi"
-optional = false
-python-versions = "*"
 version = "2019.9.11"
-
-[[package]]
+description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
-description = "Universal encoding detector for Python 2 and 3"
-name = "chardet"
 optional = false
 python-versions = "*"
-version = "3.0.4"
 
 [[package]]
+name = "chardet"
+version = "3.0.4"
+description = "Universal encoding detector for Python 2 and 3"
 category = "main"
-description = "Docutils -- Python Documentation Utilities"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "docutils"
+version = "0.15.2"
+description = "Docutils -- Python Documentation Utilities"
+category = "main"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
-version = "0.15.2"
 
 [[package]]
-category = "main"
-description = "Discover and load entry points from installed packages."
 name = "entrypoints"
+version = "0.3"
+description = "Discover and load entry points from installed packages."
+category = "main"
 optional = false
 python-versions = ">=2.7"
-version = "0.3"
 
 [[package]]
-category = "main"
-description = "Up to date simple useragent faker with real world database"
 name = "fake-useragent"
+version = "0.1.11"
+description = "Up to date simple useragent faker with real world database"
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.1.11"
 
 [[package]]
-category = "main"
-description = "the modular source code checker: pep8, pyflakes and co"
 name = "flake8"
+version = "3.5.0"
+description = "the modular source code checker: pep8, pyflakes and co"
+category = "main"
 optional = false
 python-versions = "*"
-version = "3.5.0"
 
 [package.dependencies]
 mccabe = ">=0.6.0,<0.7.0"
@@ -162,25 +159,22 @@ pycodestyle = ">=2.0.0,<2.4.0"
 pyflakes = ">=1.5.0,<1.7.0"
 
 [[package]]
-category = "main"
-description = "bypass reCAPTCHA detection in pyppeteer"
 name = "fuckcaptcha"
+version = "0.1.0"
+description = "bypass reCAPTCHA detection in pyppeteer"
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.1.0"
 
 [[package]]
-category = "main"
-description = "An asynchronized Python library to automate solving ReCAPTCHA v2 by images/audio"
 name = "goodbyecaptcha"
+version = "2.4.2"
+description = "An asynchronized Python library to automate solving ReCAPTCHA v2 by images/audio"
+category = "main"
 optional = false
 python-versions = "*"
-version = "2.4.2"
 
 [package.dependencies]
-Pillow = "6.2.1"
-PyYAML = "5.1.2"
-SpeechRecognition = "3.8.1"
 aiobotocore = "0.9.3"
 aiofiles = "0.3.2"
 aiohttp = "3.3.2"
@@ -204,6 +198,7 @@ multidict = "4.6.1"
 numpy = "1.17.4"
 opencv-python = "4.1.2.30"
 peewee = "3.11.2"
+Pillow = "6.2.1"
 pocketsphinx = "0.1.15"
 psutil = "5.4.6"
 pycodestyle = "2.3.1"
@@ -213,9 +208,11 @@ pyflakes = "1.6.0"
 pyppeteer = "0.2.2"
 pyppeteer-stealth = "1.0.0"
 python-dateutil = "2.8.1"
+PyYAML = "5.1.2"
 requests = "2.22.0"
 six = "1.13.0"
 soupsieve = "1.9.5"
+SpeechRecognition = "3.8.1"
 tqdm = "4.46.0"
 urllib3 = "1.25.9"
 user-agent = "0.1.9"
@@ -224,149 +221,153 @@ wrapt = "1.11.2"
 yarl = "1.3.0"
 
 [[package]]
-category = "main"
-description = "Internationalized Domain Names in Applications (IDNA)"
 name = "idna"
+version = "2.8"
+description = "Internationalized Domain Names in Applications (IDNA)"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "2.8"
 
 [[package]]
-category = "main"
-description = "Patch ssl.match_hostname for Unicode(idna) domains support"
 name = "idna-ssl"
+version = "1.1.0"
+description = "Patch ssl.match_hostname for Unicode(idna) domains support"
+category = "main"
 optional = false
 python-versions = "*"
-version = "1.1.0"
 
 [package.dependencies]
 idna = ">=2.0"
 
 [[package]]
-category = "main"
-description = "JSON Matching Expressions"
 name = "jmespath"
-optional = false
-python-versions = "*"
 version = "0.9.4"
+description = "JSON Matching Expressions"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
-category = "main"
-description = "McCabe checker, plugin for flake8"
 name = "mccabe"
-optional = false
-python-versions = "*"
 version = "0.6.1"
-
-[[package]]
+description = "McCabe checker, plugin for flake8"
 category = "main"
-description = "multidict implementation"
-name = "multidict"
-optional = false
-python-versions = ">=3.5"
-version = "4.6.1"
-
-[[package]]
-category = "main"
-description = "NumPy is the fundamental package for array computing with Python."
-name = "numpy"
-optional = false
-python-versions = ">=3.5"
-version = "1.17.4"
-
-[[package]]
-category = "main"
-description = "Wrapper package for OpenCV python bindings."
-name = "opencv-python"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "multidict"
+version = "4.6.1"
+description = "multidict implementation"
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "numpy"
+version = "1.17.4"
+description = "NumPy is the fundamental package for array computing with Python."
+category = "main"
+optional = false
+python-versions = ">=3.5"
+
+[[package]]
+name = "opencv-python"
 version = "4.1.2.30"
+description = "Wrapper package for OpenCV python bindings."
+category = "main"
+optional = false
+python-versions = "*"
 
 [package.dependencies]
 numpy = ">=1.11.1"
 
 [[package]]
-category = "main"
-description = "a little orm"
 name = "peewee"
+version = "3.11.2"
+description = "a little orm"
+category = "main"
 optional = false
 python-versions = "*"
-version = "3.11.2"
 
 [[package]]
-category = "main"
-description = "Python Imaging Library (Fork)"
 name = "pillow"
+version = "6.2.1"
+description = "Python Imaging Library (Fork)"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "6.2.1"
 
 [[package]]
-category = "main"
-description = "Python interface to CMU Sphinxbase and Pocketsphinx libraries"
 name = "pocketsphinx"
+version = "0.1.15"
+description = "Python interface to CMU Sphinxbase and Pocketsphinx libraries"
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.1.15"
 
 [[package]]
-category = "main"
-description = "Cross-platform lib for process and system monitoring in Python."
 name = "psutil"
+version = "5.4.6"
+description = "Cross-platform lib for process and system monitoring in Python."
+category = "main"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "5.4.6"
 
 [package.extras]
 enum = ["enum34"]
 
 [[package]]
-category = "main"
-description = "Bindings for PortAudio v19, the cross-platform audio input/output stream library."
-name = "pyaudio"
-optional = false
-python-versions = "*"
+name = "PyAudio"
 version = "0.2.11"
+description = "PortAudio Python Bindings"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.source]
+type = "file"
+url = "downloads/PyAudio-0.2.11-cp38-cp38-win_amd64.whl"
 
 [[package]]
-category = "main"
-description = "Python style guide checker"
 name = "pycodestyle"
-optional = false
-python-versions = "*"
 version = "2.3.1"
+description = "Python style guide checker"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
-category = "main"
-description = "Manipulate audio with an simple and easy high level interface"
 name = "pydub"
-optional = false
-python-versions = "*"
 version = "0.22.1"
+description = "Manipulate audio with an simple and easy high level interface"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
-category = "main"
-description = "A port of node.js's EventEmitter to python."
 name = "pyee"
-optional = false
-python-versions = "*"
 version = "7.0.1"
-
-[[package]]
+description = "A port of node.js's EventEmitter to python."
 category = "main"
-description = "passive checker of Python programs"
-name = "pyflakes"
 optional = false
 python-versions = "*"
-version = "1.6.0"
 
 [[package]]
+name = "pyflakes"
+version = "1.6.0"
+description = "passive checker of Python programs"
 category = "main"
-description = "Headless chrome/chromium automation library (unofficial port of puppeteer)"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "pyppeteer"
+version = "0.2.2"
+description = "Headless chrome/chromium automation library (unofficial port of puppeteer)"
+category = "main"
 optional = false
 python-versions = ">=3.6.1,<4.0.0"
-version = "0.2.2"
 
 [package.dependencies]
 appdirs = ">=1.4.3,<2.0.0"
@@ -376,39 +377,39 @@ urllib3 = ">=1.25.8,<2.0.0"
 websockets = ">=8.1,<9.0"
 
 [[package]]
-category = "main"
-description = "pyppeteer stealth"
 name = "pyppeteer-stealth"
+version = "1.0.0"
+description = "pyppeteer stealth"
+category = "main"
 optional = false
 python-versions = "*"
-version = "1.0.0"
 
 [[package]]
-category = "main"
-description = "Extensions to the standard Python datetime module"
 name = "python-dateutil"
+version = "2.8.1"
+description = "Extensions to the standard Python datetime module"
+category = "main"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
-version = "2.8.1"
 
 [package.dependencies]
 six = ">=1.5"
 
 [[package]]
-category = "main"
-description = "YAML parser and emitter for Python"
 name = "pyyaml"
+version = "5.1.2"
+description = "YAML parser and emitter for Python"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "5.1.2"
 
 [[package]]
-category = "main"
-description = "Python HTTP for Humans."
 name = "requests"
+version = "2.22.0"
+description = "Python HTTP for Humans."
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "2.22.0"
 
 [package.dependencies]
 certifi = ">=2017.4.17"
@@ -418,99 +419,99 @@ urllib3 = ">=1.21.1,<1.25.0 || >1.25.0,<1.25.1 || >1.25.1,<1.26"
 
 [package.extras]
 security = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)"]
-socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7)", "win-inet-pton"]
+socks = ["PySocks (>=1.5.6,!=1.5.7)", "win-inet-pton"]
 
 [[package]]
-category = "main"
-description = "Python 2 and 3 compatibility utilities"
 name = "six"
-optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 version = "1.13.0"
-
-[[package]]
+description = "Python 2 and 3 compatibility utilities"
 category = "main"
-description = "A modern CSS selector implementation for Beautiful Soup."
-name = "soupsieve"
-optional = false
-python-versions = "*"
-version = "1.9.5"
-
-[[package]]
-category = "main"
-description = "Library for performing speech recognition, with support for several engines and APIs, online and offline."
-name = "speechrecognition"
-optional = false
-python-versions = "*"
-version = "3.8.1"
-
-[[package]]
-category = "main"
-description = "Fast, Extensible Progress Meter"
-name = "tqdm"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*"
+
+[[package]]
+name = "soupsieve"
+version = "1.9.5"
+description = "A modern CSS selector implementation for Beautiful Soup."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "speechrecognition"
+version = "3.8.1"
+description = "Library for performing speech recognition, with support for several engines and APIs, online and offline."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "tqdm"
 version = "4.46.0"
+description = "Fast, Extensible Progress Meter"
+category = "main"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*"
 
 [package.extras]
 dev = ["py-make (>=0.1.0)", "twine", "argopt", "pydoc-markdown"]
 
 [[package]]
-category = "main"
-description = "HTTP library with thread-safe connection pooling, file post, and more."
 name = "urllib3"
+version = "1.25.9"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4"
-version = "1.25.9"
 
 [package.extras]
 brotli = ["brotlipy (>=0.6.0)"]
 secure = ["certifi", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "pyOpenSSL (>=0.14)", "ipaddress"]
-socks = ["PySocks (>=1.5.6,<1.5.7 || >1.5.7,<2.0)"]
+socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 
 [[package]]
-category = "main"
-description = "User-Agent generator"
 name = "user-agent"
+version = "0.1.9"
+description = "User-Agent generator"
+category = "main"
 optional = false
 python-versions = "*"
-version = "0.1.9"
 
 [package.dependencies]
 six = "*"
 
 [[package]]
-category = "main"
-description = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
 name = "websockets"
+version = "8.1"
+description = "An implementation of the WebSocket Protocol (RFC 6455 & 7692)"
+category = "main"
 optional = false
 python-versions = ">=3.6.1"
-version = "8.1"
 
 [[package]]
-category = "main"
-description = "Module for decorators, wrappers and monkey patching."
 name = "wrapt"
+version = "1.11.2"
+description = "Module for decorators, wrappers and monkey patching."
+category = "main"
 optional = false
 python-versions = "*"
-version = "1.11.2"
 
 [[package]]
-category = "main"
-description = "Yet another URL library"
 name = "yarl"
+version = "1.3.0"
+description = "Yet another URL library"
+category = "main"
 optional = false
 python-versions = ">=3.5.3"
-version = "1.3.0"
 
 [package.dependencies]
 idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "ceb4c340891d8ed1ce1727e492e3e6cc309ac4d2702f3fd991ac381c80a05201"
-lock-version = "1.0"
+lock-version = "1.1"
 python-versions = "^3.8"
+content-hash = "062fd89afbc49f0d49aa41a20889898940c07296f9d0a72bda1da73e4d1fc358"
 
 [metadata.files]
 aiobotocore = [
@@ -751,16 +752,8 @@ psutil = [
     {file = "psutil-5.4.6-cp37-cp37m-win_amd64.whl", hash = "sha256:7fdb3d02bfd68f508e6745021311a4a4dbfec53fca03721474e985f310e249ba"},
     {file = "psutil-5.4.6.tar.gz", hash = "sha256:686e5a35fe4c0acc25f3466c32e716f2d498aaae7b7edc03e2305b682226bcf6"},
 ]
-pyaudio = [
-    {file = "PyAudio-0.2.11-cp27-cp27m-win32.whl", hash = "sha256:f78d543a98b730e64621ebf7f3e2868a79ade0a373882ef51c0293455ffa8e6e"},
-    {file = "PyAudio-0.2.11-cp27-cp27m-win_amd64.whl", hash = "sha256:259bb9c1363be895b4f9a97e320a6017dd06bc540728c1a04eb4a7b6fe75035b"},
-    {file = "PyAudio-0.2.11-cp34-cp34m-win32.whl", hash = "sha256:0d92f6a294565260a282f7c9a0b0d309fc8cc988b5ee5b50645634ab9e2da7f7"},
-    {file = "PyAudio-0.2.11-cp34-cp34m-win_amd64.whl", hash = "sha256:589bfad2c615dd4b5d3757e763019c42ab82f06fba5cae64ec02fd7f5ae407ed"},
-    {file = "PyAudio-0.2.11-cp35-cp35m-win32.whl", hash = "sha256:8f89075b4844ea94dde0c951c2937581c989fabd4df09bfd3f075035f50955df"},
-    {file = "PyAudio-0.2.11-cp35-cp35m-win_amd64.whl", hash = "sha256:cf1543ba50bd44ac0d0ab5c035bb9c3127eb76047ff12235149d9adf86f532b6"},
-    {file = "PyAudio-0.2.11-cp36-cp36m-win32.whl", hash = "sha256:51b558d1b28c68437b53218279110db44f69f3f5dd3d81859f569a4a96962bdc"},
-    {file = "PyAudio-0.2.11-cp36-cp36m-win_amd64.whl", hash = "sha256:2a19bdb8ec1445b4f3e4b7b109e0e4cec1fd1f1ce588592aeb6db0b58d4fb3b0"},
-    {file = "PyAudio-0.2.11.tar.gz", hash = "sha256:93bfde30e0b64e63a46f2fd77e85c41fd51182a4a3413d9edfaf9ffaa26efb74"},
+PyAudio = [
+    {file = "PyAudio-0.2.11-cp38-cp38-win_amd64.whl", hash = "sha256:d9a83a432efbe8a49f561e5ddf5bfc40e9f475386eed395e22ab3d7ff980a3f6"},
 ]
 pycodestyle = [
     {file = "pycodestyle-2.3.1-py2.py3-none-any.whl", hash = "sha256:6c4245ade1edfad79c3446fadfc96b0de2759662dc29d07d80a6f27ad1ca6ba9"},

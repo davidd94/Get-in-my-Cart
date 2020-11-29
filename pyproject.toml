@@ -7,6 +7,7 @@ authors = ["Daviee"]
 [tool.poetry.dependencies]
 python = "^3.8"
 goodbyecaptcha = "^2.4.2"
+pyaudio = {path = "downloads/PyAudio-0.2.11-cp38-cp38-win_amd64.whl"}
 
 [tool.poetry.dev-dependencies]
 

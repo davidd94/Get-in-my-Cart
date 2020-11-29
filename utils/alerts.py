@@ -10,8 +10,6 @@ from settings import (
 async def execute_alert():
     if alert_type == "sound":
         await play_loud_alert()
-    elif alert_type == "email":
-        email()
     elif alert_type == "paypal":
         pass
 
