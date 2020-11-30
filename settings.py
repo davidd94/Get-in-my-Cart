@@ -23,14 +23,14 @@ item_data = [
         "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
         "item_title": "MSI GeForce RTX 3080 DirectX 12 RTX 3080 GAMING X TRIO 10G 10GB 320-Bit GDDR6X PCI Express 4.0 HDCP Ready Video Card",
     },
-    {
-        "name": "WD Blue 3D NAND 500GB",
-        "url": "https://www.newegg.com/",
-        "item_url": "https://www.newegg.com/western-digital-blue-500gb/p/N82E16820250087",
-        "cart_url": "https://secure.newegg.com/shop/cart",
-        "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
-        "item_title": "WD Blue 3D NAND 500GB Internal SSD - SATA III 6Gb/s 2.5\"/7mm Solid State Drive - WDS500G2B0A",
-    },
+    # {
+    #     "name": "WD Blue 3D NAND 500GB",
+    #     "url": "https://www.newegg.com/",
+    #     "item_url": "https://www.newegg.com/western-digital-blue-500gb/p/N82E16820250087",
+    #     "cart_url": "https://secure.newegg.com/shop/cart",
+    #     "login_url": "https://secure.newegg.com/NewMyAccount/AccountLogin.aspx",
+    #     "item_title": "WD Blue 3D NAND 500GB Internal SSD - SATA III 6Gb/s 2.5\"/7mm Solid State Drive - WDS500G2B0A",
+    # },
     {
         "name": "ASUS ROG Strix GeForce RTX 3080",
         "url": "https://www.newegg.com/",

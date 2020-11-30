@@ -1,8 +1,6 @@
-import requests
 import time
 import asyncio
-import threading
-import fuckcaptcha
+import os
 from pyppeteer import launch
 from colorama import init
 from termcolor import colored
@@ -11,7 +9,7 @@ from custom_solver import MySolver
 from utils.alerts import play_quiet_alert
 from utils.email import email
 from utils.scrape import PageContext
-from utils.random import random_int
+from utils.logging import logger
 from settings import (
     headless,
     options,
@@ -22,6 +20,7 @@ from settings import (
     alert_type,
 )
 
+cur_dir = os.getcwd()
 init() # inits terminal color text
 
 
@@ -55,14 +54,8 @@ async def scrape_url(item):
 
     while not page_context.item_added and max_retry >= 0:
         timestamp = round(time.time())
-        add_results = False
+        add_results = await page_context.add_item_to_cart()
 
-        try:
-            add_results = await page_context.add_item_to_cart()
-        except Exception as e:
-            print(e)
-            await play_quiet_alert()
-        
         if add_results:
             await page.screenshot({"path": f"./images/{item_name}-in-stock-{timestamp}.png"})
             # go to cart for last verification
@@ -77,13 +70,14 @@ async def scrape_url(item):
                 page_context.item_added = True
                 if alert_type == "email":
                     await page_context.login()
-                    await play_quiet_alert()
                 email(item_name=item_name, item_url=item_url)
                 await browser.close()
                 return True
             else:
                 max_retry -= 1
                 print(colored(f"ERROR: {item_name} has been added but cannot be found in cart!", 'yellow'))
+                logger.exception(f"ERROR: {item_name} has been added but cannot be found in cart! You may want to check the item's page at: ({item_url})")
+                await play_quiet_alert()
         else:
             print(colored(f"{item_name}: OUT OF STOCK", 'red'))
             await page_context.refresh_page()
@@ -93,6 +87,10 @@ async def scrape_url(item):
     return False
 
 async def run():
+    # create necessary folders prior starting script
+    if not os.path.exists(f"{cur_dir}/images"):
+        os.makedirs(f"{cur_dir}/images")
+
     tasks = [asyncio.create_task(scrape_url(item)) for item in item_data]
     await asyncio.gather(*tasks)
 

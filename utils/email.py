@@ -1,15 +1,12 @@
 import smtplib
 from email.mime.text import MIMEText
-import os
 
+from utils.logging import logger
 from settings import (
     email_sender,
     email_password,
     email_recipients,
 )
-
-
-cur_dir = os.getcwd()
 
 
 def email(item_name, item_url="", subject=None, body=None):
@@ -27,6 +24,8 @@ def email(item_name, item_url="", subject=None, body=None):
         server.login(email_sender, email_password)
         server.sendmail(from_addr=email_sender, to_addrs=email_recipients, msg=msg.as_string())
         server.quit()
-    except:
+        logger.info(f"Successfully sent out email notification for ({item_name})")
+    except Exception as e:
+        logger.exception("something went wrong trying to send an email...")
+        logger.exception(e)
         print("something went wrong trying to send an email...")
-    

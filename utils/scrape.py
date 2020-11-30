@@ -6,6 +6,8 @@ import traceback
 from datetime import datetime
 from pyppeteer.errors import PyppeteerError, PageError
 
+from utils.logging import logger
+from utils.alerts import play_quiet_alert
 from settings import email_options
 
 
@@ -45,7 +47,9 @@ class PageContext():
 
         text_content = await self.get_element_text_content("h1", "textContent", "product-title")
         if text_content != self.item_btn_title:
-            raise RuntimeError(f"Item set title ({self.item['name']}) aren't matching with website title ({text_content})!")
+            logger.exception(f"Item set title ({self.item['name']}) aren't matching with website title ({text_content})!")
+            await play_quiet_alert()
+            return False
 
         if existing_btn_elem:
             elem_title = f"Add {self.item_btn_title} to cart"
@@ -54,6 +58,7 @@ class PageContext():
 
             if element:
                 await self.page.evaluate(f"(element) => element.click()", element)
+                logger.info(f"Attempting to add item ({self.item["name"]}) to cart")
                 await asyncio.sleep(1)
                 return True
         return False
@@ -63,7 +68,7 @@ class PageContext():
         found_added_cart_text = await self.page.evaluate(js_func_added)
         
         if found_added_cart_text:
-            print(f"Successfully added to cart at: {datetime.now()}")
+            logger.info(f"Successfully added item ({self.item["name"]}) to cart")
             return True
 
         return False
@@ -96,31 +101,11 @@ class PageContext():
         login_pass = email_options.get("password")
 
         print("Entering login email...")
+        logger.info(f"Entering login email... for ({self.item["name"]})")
         await self.page.type('input[name="signEmail"]', login_email)
         await asyncio.sleep(2)
         await self.page.click('button[id="signInSubmit"]')
         await asyncio.sleep(2)
-        
-        # email_code_elem = await self.existing_element(
-        #     elem_tag="div",
-        #     elem_attr="class",
-        #     elem_attr_values=["form-v-code]"
-        # )
-
-        # recaptcha_elem = await self.existing_element(
-        #     elem_tag="textarea",
-        #     elem_attr="id",
-        #     elem_attr_values=["g-recaptcha-response]"
-        # )
-
-        # if email_code_elem:
-        #     print("Require email code to login...")
-        #     await asyncio.sleep(240)
-        #     await self.page.click('button[id="signInSubmit"]')
-        
-        # if recaptcha_elem:
-        #     print("Solving recaptcha for login...")
-        #     await self.solve()
 
         await self.existing_element(
             elem_tag="input",
@@ -128,12 +113,16 @@ class PageContext():
             elem_attr_values=["labeled-input-password"],
         )
         print("Entering login pass...")
+        logger.info(f"Entering login pass... for ({self.item["name"]})")
         await self.page.type('input[name="password"]', login_pass)
         await asyncio.sleep(2)
         await self.page.click('button[id="signInSubmit"]')
         print("Logging in...")
+        logger.info(f"Logging in... for ({self.item["name"]})")
         await self.page.waitForNavigation()
-        print("Logged in!")
+        print("Successfully logged in!")
+        logger.info(f"Successfully logged in!!! ({self.item["name"]})")
+        await play_quiet_alert()
 
     async def close_popup(self):
         popup = await self.existing_element("div", "id", ["popup"])
